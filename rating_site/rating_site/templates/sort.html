@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Lookahead Test</title>
+    <meta name="generator" content="BBEdit 9.6" />
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://johnny.github.io/jquery-sortable/js/jquery-sortable.js"></script>
+
+
+<style>
+
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+
+ol.example li.placeholder {
+  position: relative;
+  /** More li styles **/
+}
+ol.example li.placeholder:before {
+  position: absolute;
+  /** Define arrowhead **/
+}
+
+#navcontainer ol
+{
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+
+#navcontainer li { margin: 0 0 .2em 0; }
+
+#navcontainer li
+{
+display: block;
+color: #FFF;
+background-color: #036;
+width: 9em;
+padding: .2em .8em;
+text-decoration: none;
+}
+
+#navcontainer li:hover
+{
+background-color: #ddd;
+color: #808;
+}
+</style>
+    
+
+
+</head>
+<body>
+<div id ="navcontainer">
+<ol id="exp" class='example'>
+  {% for obj in object_list %}
+  <li>{{obj.res_name}} </li>
+  {% endfor %}
+</ol>
+</div>
+
+<button>Submit</button>
+<div></div>
+
+
+<script>
+$(function  () {
+  $("ol.example").sortable()
+
+});
+
+var URL = "/plist_exp/"
+
+$(document).ready(function(){
+  $("button").click(function(){
+    var plist = new Array();
+    jQuery('#exp li').each(function(){
+     plist.push($(this).text());
+    });
+    console.log(plist);
+    var data = {
+        'plist':plist,
+        'csrfmiddlewaretoken': '{{ csrf_token }}'
+      };
+    $.post(URL,data)
+  });
+});
+
+var adjustment
+
+$("ol.simple_with_animation").sortable({
+  group: 'simple_with_animation',
+  pullPlaceholder: false,
+  // animation on drop
+  onDrop: function  (item, targetContainer, _super) {
+    var clonedItem = $('<li/>').css({height: 0})
+    item.before(clonedItem)
+    clonedItem.animate({'height': item.height()})
+    
+    item.animate(clonedItem.position(), function  () {
+      clonedItem.detach()
+      _super(item)
+    })
+  },
+
+  // set item relative to cursor position
+  onDragStart: function ($item, container, _super) {
+    var offset = $item.offset(),
+    pointer = container.rootGroup.pointer
+
+    adjustment = {
+      left: pointer.left - offset.left,
+      top: pointer.top - offset.top
+    }
+
+    _super($item, container)
+  },
+  onDrag: function ($item, position) {
+    $item.css({
+      left: position.left - adjustment.left,
+      top: position.top - adjustment.top
+    })
+  }
+});
+
+var group = $("ol.limited_drop_targets").sortable({
+  group: 'limited_drop_targets',
+  isValidTarget: function  (item, container) {
+    if(item.is(".highlight"))
+      return true
+    else {
+      return item.parent("ol")[0] == container.el[0]
+    }
+  },
+  onDrop: function (item, container, _super) {
+    $('#serialize_output').text(group.sortable("serialize").get().join("\n"))
+    _super(item, container)
+  },
+  serialize: function (parent, children, isContainer) {
+    return isContainer ? children.join() : parent.text()
+  },
+  tolerance: 6,
+  distance: 10
+});
+</script>
+ 
+</body>
+</html>
