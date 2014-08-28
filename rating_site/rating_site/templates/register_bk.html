@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Fruit Art</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="stylesheet/styles.css" />
+<script language="javascript" type="text/javascript" src="script/mootools-1.2.1-core.js"></script>
+<script language="javascript" type="text/javascript" src="script/mootools-1.2-more.js"></script>
+<script language="javascript" type="text/javascript" src="script/slideitmoo-1.1.js"></script>
+<script language="javascript" type="text/javascript">
+window.addEvents({
+    'domready': function () { /* thumbnails example , div containers */
+        new SlideItMoo({
+            overallContainer: 'SlideItMoo_outer',
+            elementScrolled: 'SlideItMoo_inner',
+            thumbsContainer: 'SlideItMoo_items',
+            itemsVisible: 5,
+            elemsSlide: 2,
+            duration: 150,
+            itemsSelector: '.SlideItMoo_element',
+            itemWidth: 158,
+            showControls: 1
+        });
+    },
+
+});
+</script>
+<script language="javascript" type="text/javascript">
+function clearText(field) {
+    if (field.defaultValue == field.value) field.value = '';
+    else if (field.value == '') field.value = field.defaultValue;
+}
+</script>
+</head>
+<body>
+<div id="site_title_bar_wrapper_outter">
+  <div id="site_title_bar_wrapper_inner">
+    <div id="site_title_bar">
+      <div id="banner_left">
+        <div id="site_title">
+          
+        </div>
+        <div id="menu">
+          <ul>
+            
+          </ul>
+        </div>
+        <!-- end of menu -->
+      </div>
+      <div id="banner_right">
+        <div id="banner_box">
+         
+        </div>
+      </div>
+    </div>
+    <!-- end of site_title_bar  -->
+  </div>
+  <!-- end of site_title_bar_wrapper_inner -->
+</div>
+<!-- end of site_title_bar_wrapper_outter  -->
+<div id="content">
+  <div class="section_w940">
+    
+  </div>
+  <div class="cleaner_h40"></div>
+  
+  <!-- end of product gallery -->
+ 
+    
+    <div class="cleaner"></div>
+  </div>
+</div>
+<!-- end of content -->
+<div id="footer_wrapper">
+  <div id="footer">
+   
+      </div>
+    </div>
+    
+    
+    </div>
+    <div class="cleaner_h40"></div>
+    <center>
+      Copyright &copy; 2048 <a href="#">Your Company Name</a> | Designed by <a target="_blank" rel="nofollow" href="http://www.templatemo.com">templatemo</a>
+    </center>
+  </div>
+  <!-- end of footer -->
+  <div class="cleaner"></div>
+</div>
+<!-- end of footer wrapper -->
+</body>
+</html>

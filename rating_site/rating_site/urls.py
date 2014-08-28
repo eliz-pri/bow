@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from bow.views import my_view_that_updates_plist,ResListView,login_user
+from bow.views import my_view_that_updates_plist,ResListView,RegisterView
 from django.views.generic import TemplateView
 
 from django.contrib import admin
@@ -11,7 +11,8 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^about/', ResListView.as_view()),
-    url(r'^plist_exp/$',my_view_that_updates_plist),
-    url(r'^login/$', login_user),
+    url(r'^rate/(?P<name>\w*[-]\d+)/$', ResListView.as_view()),
+    url(r'^plist_exp/(?P<name>\w*[-]\d+)/$',my_view_that_updates_plist),
+    url(r'^login/$', RegisterView.as_view()),
+    url(r'^index/$',TemplateView.as_view(template_name='index.html'))
 )

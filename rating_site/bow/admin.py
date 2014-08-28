@@ -1,5 +1,5 @@
 from django.contrib import admin
-from bow.models import Restaurant,UserBW2
+from bow.models import Restaurant,UserBW2,User
 # Register your models here.
 
 class RestaurantAdmin(admin.ModelAdmin):
@@ -17,3 +17,7 @@ admin.site.register(UserBW2,UserBWAdmin)
 
 class UserAdmin(admin.ModelAdmin):
 	fields = ('name','email')
+	list_display =('name','email')
+
+
+admin.site.register(User,UserAdmin)
