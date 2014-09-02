@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView,ListView
 from django.views.generic.edit import CreateView,FormView
-from bow.models import Restaurant,UserBW2
+from bow.models import Restaurant,UserBW2,User
 from bow.forms import ResForm,UserForm
 from django.views.decorators.http import require_POST
 from django.http import HttpResponse,HttpResponseRedirect
@@ -25,9 +25,6 @@ def my_view_that_updates_plist(request,name):
             it = iter(plist)
             for rest1,rest2 in zip(it,it):
             	print str(rest1),rest2
-            	#restobj1 = Restaurant.objects.filter(res_name=rest1)
-            	#restobj2 = Restaurant.objects.filter(res_name__exact=str(rest2))
-            	#print restobj1,restobj2
             	UserBW2.objects.create(user=username,btr_res=rest1,wrs_res=rest2)
             return HttpResponse('success')
 
@@ -45,8 +42,18 @@ class ResListView(ListView):
 
 	def get_context_data(self,**kwargs):
 		context = super(ResListView,self).get_context_data(**kwargs)
-		username = self.kwargs['name']
-		context['name'] = username
+		ts = time.time()
+		print ts
+		now = datetime.datetime.fromtimestamp(ts).strftime('%Y%m%d%H%M')
+		print now
+		
+		self.username = "rand"
+	
+		self.username  = self.username+'-'+now		
+		print self.username
+                User.objects.create(name=self.username)        
+		#username = self.kwargs['name']
+		context['name'] = self.username
 		return context
 
 

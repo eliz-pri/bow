@@ -11,8 +11,9 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^rate/(?P<name>\w*[-]\d+)/$', ResListView.as_view()),
+    #url(r'^rate/(?P<name>\w*[-]\d+)/$', ResListView.as_view()),
+    url(r'^rate/$', ResListView.as_view()),
     url(r'^plist_exp/(?P<name>\w*[-]\d+)/$',my_view_that_updates_plist),
-    url(r'^login/$', RegisterView.as_view()),
-    url(r'^index/$',TemplateView.as_view(template_name='index.html'))
+    #url(r'^login/$', RegisterView.as_view()),
+    #url(r'^index/$',TemplateView.as_view(template_name='index.html'))
 )

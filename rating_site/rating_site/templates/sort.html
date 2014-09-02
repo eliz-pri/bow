@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Overflow by HTML5 UP</title>
+		<title>BOW</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -54,20 +54,21 @@ ol.example li.placeholder:before {
 
 #navcontainer ol
 {
-margin: 0;
+margin: 2px;
 padding: 0;
 list-style-type: none;
 }
 
-#navcontainer li { margin: 0 0 .2em 0; }
+#navcontainer li { margin: auto; }
 
 #navcontainer li
 {
 display: block;
 color: #FFF;
-background-color: #036;
-width: 9em;
+
+width: 12em;
 padding: .2em .8em;
+border: 10px;
 text-decoration: none;
 }
 
@@ -109,39 +110,40 @@ $(document).ready(function(){
 	<body>
 
 		<!-- Header -->
-			<section id="header">
-				<header>
-					
-					
-				</header>
-
-				<footer>
-					<a href="#banner" class="button style2 scrolly scrolly-centered">Sort</a>
-				</footer>
-			</section>
+    <!-- Header -->
+      <section id="header">
+        <header>
+          <h1>Better Or Worse</h1>
+          
+        </header>
+        <footer>
+          <a href="#banner" class="button style2 scrolly scrolly-centered">Enter</a>
+        </footer>
+      </section>
+			
 		
 		<!-- Banner -->
 			<section id="banner">
 				<header>
 					<h2>Sort Restaurant list</h2> 
 				</header>
-				
-          <div>
-				<ol id="exp" class='example'>
+				<div id ="navcontainer">
+<ol id="exp" class='example'>
   {% for obj in object_list %}
-  <ul class="icons-bold">
+
   <li>{{obj.res_name}} </li>
-</ul>
   {% endfor %}
 </ol>
 </div>
-
+         
+<br/>
+<br/>
 <button class="button style2">Submit</button>
 <div></div>
 			
+				</section>
 				
-				
-			</section>
+			
 		
 		 
 		<!-- Feature 1 -->
@@ -385,7 +387,7 @@ $(document).ready(function(){
 			</ul> -->
 			<div class="copyright">
 				<ul class="menu">
-					<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					<li>&copy; BOW All rights reserved.</li>
 				</ul>
 			</div>
 		</section>
