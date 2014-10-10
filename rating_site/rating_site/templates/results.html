@@ -1,0 +1,240 @@
+<!DOCTYPE HTML>
+<!--
+	Overflow by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>BOW</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="/static/bow/js/jquery.min.js"></script>
+		<script src="/static/bow/js/jquery.scrolly.min.js"></script>
+		<script src="/static/bow/js/jquery.poptrox.min.js"></script>
+		<script src="/static/bow/js/skel.min.js"></script>
+		<script src="/static/bow/js/init.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://johnny.github.io/jquery-sortable/js/jquery-sortable.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="/static/bow/css/skel.css" />
+			<link rel="stylesheet" href="/static/bow/css/style.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+  <style>
+
+
+
+a {
+  color: #666666;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #555E4F;
+  text-decoration: none;
+}
+
+/* Menu */
+
+
+
+ol.example li.placeholder {
+  position: relative;
+  /** More li styles **/
+}
+ol.example li.placeholder:before {
+  position: absolute;
+  /** Define arrowhead **/
+}
+
+#navcontainer ol
+{
+margin: 2px;
+padding: 0;
+list-style-type: none;
+}
+
+#navcontainer li { margin: auto; }
+
+#navcontainer li
+{
+display: block;
+color: #FFF;
+
+width: 12em;
+padding: .2em .8em;
+border: 10px;
+text-decoration: none;
+}
+
+#navcontainer li:hover
+{
+background-color: #ddd;
+color: #808;
+}
+
+
+
+  </style>
+  <script>
+$(function  () {
+  $("ol.example").sortable()
+
+});
+
+var URL = "/plist_exp/{{name}}/"
+
+$(document).ready(function(){
+  $("button").click(function(){
+    var plist = new Array();
+    jQuery('#exp li').each(function(){
+     plist.push($(this).text());
+    });
+    console.log(plist);
+    var data = {
+        'plist':plist,
+        'csrfmiddlewaretoken': '{{ csrf_token }}'
+      };
+    $.post(URL,data)
+  });
+});
+
+
+
+  </script>
+
+
+  <style>
+
+  
+.wrap {
+  width: 500px;
+  margin: 0 auto;
+  
+}
+table, td, th {
+    border: 1px solid green;
+}
+
+th {
+    background-color: green;
+    color: white;
+}
+</style>
+	<body>
+
+		<!-- Header -->
+    <!-- Header -->
+      <section id="header">
+        <header>
+          
+          <h2> Best Ramen place in bay area </h2>
+          
+        </header>
+        <div id ="navcontainer">
+        	<div class ="wrap">
+<table>
+<th>
+	<tr>
+	<td>Ramen Place</td>
+	<td>Thumbs Up </td>
+	<td> Thumbs down </td>
+</tr>
+</th>
+
+{% for key,value in score.items %}
+
+<tr>
+<td> {{key}} </td>
+
+<td> {{value.0}} </td>
+<td> {{value.1}} </td>
+
+</tr>
+{% endfor %}
+
+
+
+</table>
+
+</div>
+
+</div>
+        
+        
+          <a href="#banner">Click to sign up for updates</a>
+        
+      
+			<!-- section 1 -->
+		
+
+
+
+		<!-- Banner -->
+			<section id="banner">
+
+<article class="container box style3">
+				
+				<form method="post" action="">
+					{% csrf_token %}
+					<div class="row half">
+
+						<div class="6u"><font color="black">Name</font>{{ form.name }}</div> 
+						<div class="6u"><font color="black"> Email </font>{{form.email}}</div> 
+                        
+						
+					</div>
+					<div class="row half">
+						
+					</div>
+					<div class="row">
+						<div class="12u">
+							<ul class="actions">
+								<li><input type="submit" value="Submit" /></li>
+							</ul>
+						</div>
+					</div>
+				</form>
+			</article>
+
+
+
+				
+
+</article>
+
+
+
+
+
+
+				</section>
+				
+			
+		
+		
+		
+		
+		<section id="footer">
+			<!-- <ul class="icons">
+				<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+				<li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+				<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+				<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+			</ul> -->
+			<div class="copyright">
+				<ul class="menu">
+					<li>&copy; BOW All rights reserved.</li>
+				</ul>
+			</div>
+		</section>
+
+	</body>
+</html>

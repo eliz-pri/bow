@@ -897,6 +897,61 @@
 				border-bottom-color: rgba(255,255,255,0);
 			}
 
+
+/*********************************************************************************/
+/* Banner2                                                                        */
+/*********************************************************************************/
+
+	#banner2
+	{
+		position: relative;
+		color: #fff;
+		text-shadow: 0 0 0.5px rgba(255,255,255,0.25);
+		text-align: center;
+		background: #35b88f url('images/banner.svg') bottom center no-repeat;
+		padding: 5em 0 5em 0;
+		margin: 0;
+		background-size: 125% auto;
+	}
+
+		#banner2 .button
+		{
+			color: #35b882;
+			text-shadow: 0 0 0.5px rgba(53,184,130,0.25);
+		}
+
+		#banner2 header
+		{
+			margin: 0 0 2em 0;
+		}
+		
+			#banner2 header h2
+			{
+				font-weight: 400;
+				font-size: 1.75em;
+				letter-spacing: 8px;
+			}
+
+		#banner2 p
+		{
+			margin: 0;
+		}
+
+		#banner2 footer
+		{
+			margin: 2em 0 0 0;
+		}
+		
+		#banner2 a
+		{
+			color: inherit;
+			border-bottom-color: rgba(255,255,255,0.5);
+		}
+		
+			#banner2 a:hover
+			{
+				border-bottom-color: rgba(255,255,255,0);
+			}
 /*********************************************************************************/
 /* Footer                                                                        */
 /*********************************************************************************/
