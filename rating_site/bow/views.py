@@ -68,7 +68,7 @@ class ResultsView(FormView):
  	    	    self.object = form.save(commit=True)
                     return super(ResultsView,self).form_valid(form)
 
-        def get_sucess_url(self):
+        def get_success_url(self):
            return '/rate/thanks/'
 
         def get_context_data(self,**kwargs):
